@@ -71,6 +71,7 @@ class TripletGenerator:
 
 
 def load_train_dataset(data_train_path):
+    import tensorflow as tf
     train_dataset = tf.data.Dataset.from_generator(
         TripletGenerator(data_train_path).get_next_element,
         output_signature=(
@@ -79,10 +80,12 @@ def load_train_dataset(data_train_path):
             tf.TensorSpec(shape=(), dtype=tf.string)
         )
     )
+    return train_dataset
 
 
 def load_test_dataset(data_test_path):
-    validation_dataset = tf.data.Dataset.from_generator(
+    import tensorflow as tf
+    test_dataset = tf.data.Dataset.from_generator(
         TripletGenerator(data_test_path).get_next_element,
         output_signature=(
             tf.TensorSpec(shape=(), dtype=tf.string),
@@ -90,6 +93,7 @@ def load_test_dataset(data_test_path):
             tf.TensorSpec(shape=(), dtype=tf.string)
         )
     )
+    return test_dataset
 
 def load_dataset(data_train_path, data_test_path, image_size, batch_size, auto):
     map_fn = MapFunction(image_size)
@@ -97,11 +101,8 @@ def load_dataset(data_train_path, data_test_path, image_size, batch_size, auto):
     train_dataset = load_train_dataset(data_train_path)
     train_dataset = train_dataset.map(map_fn)
     
-    validation_dataset = load_test_dataset(data_test_path)
-    validation_dataset = validation_dataset.map(map_fn)
+    test_dataset = load_test_dataset(data_test_path)
+    test_dataset = test_dataset.map(map_fn)
     
     train_dataset = train_dataset.batch(batch_size).prefetch(auto)
-    validation_dataset = validation_dataset.batch(batch_size).prefetch(auto)
-
-
-
+    test_dataset = test_dataset.batch(batch_size).prefetch(auto)
