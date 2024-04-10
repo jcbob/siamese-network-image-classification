@@ -10,8 +10,10 @@ Repository for fruit &amp; vegetable classification based on siamese network
 ##### Priority table
 | Priority | Task                                          |
 | -------- | --------------------------------------------- |
-| 1        | implementacja narzędzi do porównywania modeli |
-| 2        | refactoring dwóch notebooków (?)              |
+| 1 | implementacja narzędzi do porównywania modeli |
+| 2 | refactoring dwóch notebooków (?)              |
+| 3 | szukanie kolejnych zbiorów + odpalenie obecnych modeli na "fruit recognition".|
+| 4 | zainteresować się artykułem: [building powerful image classification models using very little data](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html) 
 
 ##### Others
 - podpiąć dataset "fruit-recognition" jako bazę danych
