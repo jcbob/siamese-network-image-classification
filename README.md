@@ -6,6 +6,11 @@ Repository for fruit &amp; vegetable classification based on siamese network
 - Date ended: -
 - Author(s): Patryk Gawłowski, Filip Żmuda, Kamil Tokarek, Jakub Wolski, firma InsERT (Jan Sowa, Krzysztof Raszczuk)
 ---
+## Kto co robi
+- Kuba
+	- [ ] refaktoryzacja triplet-loss-model
+
+---
 ## ToDo
 ##### Priority table
 | Priority | Task                                          |
