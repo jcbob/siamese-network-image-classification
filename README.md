@@ -9,7 +9,8 @@ Repository for fruit &amp; vegetable classification based on siamese network
 ## Kto co robi
 - Kuba
 	- [ ] refaktoryzacja triplet-loss-model
-
+- Patryk
+  	- [ ] dowiem się jak predykować triplet loss i poszukam zdjęć do bazy embedingów
 ---
 ## ToDo
 ##### Priority table
