@@ -106,3 +106,5 @@ def load_dataset(data_train_path, data_test_path, image_size, batch_size, auto):
     
     train_dataset = train_dataset.batch(batch_size).prefetch(auto)
     test_dataset = test_dataset.batch(batch_size).prefetch(auto)
+
+    return train_dataset, test_dataset
