@@ -1,4 +1,5 @@
 from keras import Model
+from keras import metrics
 
 class SiameseModel(Model):
     """The Siamese Network model with custom training and testing loops.
