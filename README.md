@@ -13,6 +13,8 @@ Repository for fruit &amp; vegetable classification based on siamese network
   	- [ ] dowiem się jak predykować triplet loss i poszukam zdjęć do bazy embedingów
 - Filip
   	- [ ] refaktoryzacja oceny modelu
+- Kamil
+  	- [ ] refaktoryzacja contrastive-loss
 ---
 ## ToDo
 ##### Priority table
