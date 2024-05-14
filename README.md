@@ -26,21 +26,29 @@ Repository for fruit &amp; vegetable classification based on siamese network
 | 4 | zainteresować się artykułem: [building powerful image classification models using very little data](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html) 
 
 ##### Others
-- podpiąć dataset "fruit-recognition" jako bazę danych
+- [ ] podpiąć dataset "fruit-recognition" jako bazę danych
 
-- zaimplementowanie metryk porównujących modeli
-	- top3/top1 accuracy
-	- czy prawidłowy etykieta owocu znajduje się w pierwszej 3-ce zaproponowanych przez model
+- [ ] zaimplementowanie metryk porównujących modeli
+	- [x] top3/top1 accuracy
+	- [ ] czy prawidłowa etykieta owocu znajduje się w pierwszej 3-ce zaproponowanych przez model
 
-- funkcja (osobna od modelu), która zwraca wektor z listy do której jest najbliżej wektor podany jako argument
+- [ ] funkcja (osobna od modelu), która zwraca wektor z listy do której jest najbliżej wektor podany jako argument
 	- użyć euclidean_disctance()
 
-- szukać bazy danych z produktami spożywczymi/warzywami/owocami, które mają też etykiety
+- [ ] szukać bazy danych z produktami spożywczymi/warzywami/owocami, które mają też etykiety
 
-- jak zapisywać wagi do pliku
+- [ ] jak zapisywać wagi do pliku
 
-- przerzucanie kodu z notebooków do plików `.py`
-	- tworzenie bazy danych - stworzenie tf.data.Dataset
-	- moduły pomagające w budowie modelu
-	- ocena jakości modelu
+- [ ] zdjęcia reprezentantów klas
+	- [ ] zastanowić się:
+		- [ ] w jakiej postaci trzymać embeddingi wzorcowych zdjęć
+		- [ ] jakie/które zdjęcia wybrać
+  		- [ ] ile ich wybrać
+    		- [ ] jak je porównywać z tymi wygenerowanymi
+      			- średnia (na początek)
+         		- inne?
 
+- [ ] przerzucanie kodu z notebooków do plików `.py`
+	- [x] tworzenie bazy danych - stworzenie tf.data.Dataset
+	- [ ] moduły pomagające w budowie modelu
+	- [ ] ocena jakości modelu
