@@ -29,7 +29,7 @@ Repository for fruit &amp; vegetable classification based on siamese network
 - [ ] podpiąć dataset "fruit-recognition" jako bazę danych
 
 - [ ] zaimplementowanie metryk porównujących modeli
-	- [x] top3/top1 accuracy
+	- [x] ~~top3/top1 accuracy~~
 	- [ ] czy prawidłowa etykieta owocu znajduje się w pierwszej 3-ce zaproponowanych przez model
 
 - [ ] funkcja (osobna od modelu), która zwraca wektor z listy do której jest najbliżej wektor podany jako argument
@@ -49,6 +49,6 @@ Repository for fruit &amp; vegetable classification based on siamese network
          		- inne?
 
 - [ ] przerzucanie kodu z notebooków do plików `.py`
-	- [x] tworzenie bazy danych - stworzenie tf.data.Dataset
+	- [x] ~~tworzenie bazy danych - stworzenie tf.data.Dataset~~
 	- [ ] moduły pomagające w budowie modelu
 	- [ ] ocena jakości modelu
