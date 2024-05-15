@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-def create_model(img_shape):
+def create_embedding(img_shape):
     input = tf.keras.layers.Input(shape=img_shape)
     x = tf.keras.layers.BatchNormalization()(input)
     x = tf.keras.layers.Conv2D(4, (5, 5), activation="tanh")(x)
