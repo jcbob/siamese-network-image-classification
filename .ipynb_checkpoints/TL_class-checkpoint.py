@@ -1,7 +1,8 @@
+import tensorflow as tf
 from keras import Model
 from keras import metrics
 
-class SiameseModel(Model):
+class SiameseTripletModel(Model):
     """The Siamese Network model with custom training and testing loops.
 
     Computes the triplet loss using the three embeddings produced by the
