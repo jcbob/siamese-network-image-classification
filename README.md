@@ -52,3 +52,10 @@ Repository for fruit &amp; vegetable classification based on siamese network
 	- [x] ~~tworzenie bazy danych - stworzenie tf.data.Dataset~~
 	- [ ] moduły pomagające w budowie modelu
 	- [ ] ocena jakości modelu
+
+---
+## Notes
+- sprawdzić czy foldery `TotalNumberOf...` w głównej bazie:
+	- istnieją
+ 	- są brane pod uwagę w uczeniu
+  	- trzeba się zastanowić do czego mogą się przydać - jak nie to usunąć
