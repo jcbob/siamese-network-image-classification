@@ -25,20 +25,26 @@ class TripletGenerator:
         self.fruitNames = list()
         for folderName in os.listdir(datasetPath):
             absoluteFolderName = os.path.join(datasetPath, folderName)
-            numImages = len(os.listdir(absoluteFolderName))
-            if numImages > 1:
-                self.fruitNames.append(absoluteFolderName)
+            # Check if the path is a directory and ignore .DS_Store files
+            if os.path.isdir(absoluteFolderName) and folderName != '.DS_Store':
+                # Filter out .DS_Store files from the image count
+                numImages = len([f for f in os.listdir(absoluteFolderName) if f != '.DS_Store' and os.path.isfile(os.path.join(absoluteFolderName, f))])
+                if numImages > 1:
+                    self.fruitNames.append(absoluteFolderName)
         self.allFruit = self.generate_all_fruit_dict()
+        
     def generate_all_fruit_dict(self):
         allFruit = dict()
         for fruitName in self.fruitNames:
-            imageNames = os.listdir(fruitName)
+            # Ignore .DS_Store files in the directory listing
+            imageNames = [f for f in os.listdir(fruitName) if f != '.DS_Store']
             fruitPhotos = [
                 os.path.join(fruitName, imageName) for imageName in imageNames
                 if os.path.isfile(os.path.join(fruitName, imageName))
             ]
             allFruit[fruitName] = fruitPhotos
         return allFruit
+
     def get_next_element(self):
         while True:
             anchorName = random.choice(self.fruitNames)
@@ -46,28 +52,76 @@ class TripletGenerator:
             temporaryNames.remove(anchorName)
             negativeName = random.choice(temporaryNames)
             (anchorPhoto, positivePhoto) = np.random.choice(
-                a = self.allFruit[anchorName],
-                size=2,
-                replace=False
-            )
-            negativePhoto = random.choice(self.allFruit[negativeName])
-            yield (anchorPhoto, positivePhoto, negativePhoto)
-    def get_next_element_example(self):
-        i=0
-        while i<10:
-            i+=1
-            anchorName = random.choice(self.fruitNames)
-            temporaryNames = self.fruitNames.copy()
-            temporaryNames.remove(anchorName)
-            negativeName = random.choice(temporaryNames)
-            (anchorPhoto, positivePhoto) = np.random.choice(
-                a = self.allFruit[anchorName],
+                a=self.allFruit[anchorName],
                 size=2,
                 replace=False
             )
             negativePhoto = random.choice(self.allFruit[negativeName])
             yield (anchorPhoto, positivePhoto, negativePhoto)
 
+    def get_next_element_example(self):
+        i = 0
+        while i < 10:
+            i += 1
+            anchorName = random.choice(self.fruitNames)
+            temporaryNames = self.fruitNames.copy()
+            temporaryNames.remove(anchorName)
+            negativeName = random.choice(temporaryNames)
+            (anchorPhoto, positivePhoto) = np.random.choice(
+                a=self.allFruit[anchorName],
+                size=2,
+                replace=False
+            )
+            negativePhoto = random.choice(self.allFruit[negativeName])
+            yield (anchorPhoto, positivePhoto, negativePhoto)
+
+# class TripletGenerator:
+#     def __init__(self, datasetPath):
+#         self.fruitNames = list()
+#         for folderName in os.listdir(datasetPath):
+#             absoluteFolderName = os.path.join(datasetPath, folderName)
+#             numImages = len([f for f in os.listdir(absoluteFolderName) if f != '.DS_Store'])
+#             if numImages > 1:
+#                 self.fruitNames.append(absoluteFolderName)
+#         self.allFruit = self.generate_all_fruit_dict()
+#     def generate_all_fruit_dict(self):
+#         allFruit = dict()
+#         for fruitName in self.fruitNames:
+#             imageNames = os.listdir(fruitName)
+#             fruitPhotos = [
+#                 os.path.join(fruitName, imageName) for imageName in imageNames
+#                 if os.path.isfile(os.path.join(fruitName, imageName))
+#             ]
+#             allFruit[fruitName] = fruitPhotos
+#         return allFruit
+#     def get_next_element(self):
+#         while True:
+#             anchorName = random.choice(self.fruitNames)
+#             temporaryNames = self.fruitNames.copy()
+#             temporaryNames.remove(anchorName)
+#             negativeName = random.choice(temporaryNames)
+#             (anchorPhoto, positivePhoto) = np.random.choice(
+#                 a = self.allFruit[anchorName],
+#                 size=2,
+#                 replace=False
+#             )
+#             negativePhoto = random.choice(self.allFruit[negativeName])
+#             yield (anchorPhoto, positivePhoto, negativePhoto)
+#     def get_next_element_example(self):
+#         i=0
+#         while i<10:
+#             i+=1
+#             anchorName = random.choice(self.fruitNames)
+#             temporaryNames = self.fruitNames.copy()
+#             temporaryNames.remove(anchorName)
+#             negativeName = random.choice(temporaryNames)
+#             (anchorPhoto, positivePhoto) = np.random.choice(
+#                 a = self.allFruit[anchorName],
+#                 size=2,
+#                 replace=False
+#             )
+#             negativePhoto = random.choice(self.allFruit[negativeName])
+#             yield (anchorPhoto, positivePhoto, negativePhoto)
 
 
 def load_train_dataset(data_train_path):
