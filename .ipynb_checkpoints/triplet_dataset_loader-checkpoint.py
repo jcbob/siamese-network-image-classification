@@ -104,8 +104,8 @@ class TripletGenerator:
         return self._get_triplet(self.test_images)
 
 
-def create_dataset(path, img_size, batch_size):
-    triplet_generator = TripletGeneratorNew(path)
+def create_dataset(path, split_ratio, img_size, batch_size):
+    triplet_generator = TripletGenerator(path, split_ratio)
     image_processor = MapFunction(img_size)
 
     train_dataset = tf.data.Dataset.from_generator(triplet_generator.get_train_element,
