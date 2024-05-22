@@ -35,6 +35,10 @@ class TripletGenerator:
                 if numImages > 1:
                     self.fruitNames.append(absoluteFolderName)
         self.allFruit = self.generate_all_fruit_dict()
+
+    def show_fruit_names(self):
+        for fruitName in self.fruitNames:
+            print(fruitName)
         
     def generate_all_fruit_dict(self):
         allFruit = dict()
@@ -104,14 +108,14 @@ def load_two_datasets(dataset_path, image_size, batch_size, auto, train_size, sa
     
     # Split dataset
     train_dataset = dataset.take(train_samples)
-    val_dataset = dataset.skip(train_samples)
+    test_dataset = dataset.skip(train_samples)
     
     print("split dataset")
     
     train_dataset = train_dataset.map(map_fn)
     train_dataset = train_dataset.batch(batch_size).prefetch(auto)
     
-    val_dataset = val_dataset.map(map_fn)
-    val_dataset = val_dataset.batch(batch_size).prefetch(auto)
+    test_dataset = test_dataset.map(map_fn)
+    test_dataset = test_dataset.batch(batch_size).prefetch(auto)
 
-    return train_dataset, val_dataset
+    return train_dataset, test_dataset

@@ -35,6 +35,10 @@ class TripletGenerator:
                 if numImages > 1:
                     self.fruitNames.append(absoluteFolderName)
         self.allFruit = self.generate_all_fruit_dict()
+
+    def show_fruit_names(self):
+        for fruitName in self.fruitNames:
+            print(fruitName)
         
     def generate_all_fruit_dict(self):
         allFruit = dict()
