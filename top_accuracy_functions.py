@@ -67,20 +67,3 @@ def show_top3_accuracy(ref_img_paths, closest_3_indices, query_img_path, map_fun
         plt.axis('off')
     
     plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
