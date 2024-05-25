@@ -8,7 +8,8 @@ Repository for fruit &amp; vegetable classification based on siamese network
 ---
 ## Kto co robi
 - Kuba
-	- [ ] refaktoryzacja triplet-loss-model
+	- [x] refaktoryzacja triplet-loss-model
+    - [ ] impelemntacja topX accuracy w uczeniu
 - Patryk
   	- [ ] dowiem się jak predykować triplet loss i poszukam zdjęć do bazy embedingów
 - Filip
