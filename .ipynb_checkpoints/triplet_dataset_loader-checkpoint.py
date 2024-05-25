@@ -41,12 +41,12 @@ class TripletGenerator:
                     label_names.append(folder_name)
         return label_names
 
-    def show_label_names(self):
+    def get_label_names_list(self):
         return self.label_names
         for label in self.label_names:
             print(label)
 
-    def show_label_images_dict(self):
+    def get_label_images_dict(self):
         return self.label_images
         for label, images in self.label_images.items():
             print(f"{label} - {images}")
