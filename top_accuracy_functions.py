@@ -1,8 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def euclidean_distance(vec1, vec2):
     return np.linalg.norm(vec1 - vec2)
+
 
 def top1_accuracy(vector_anchor, list_of_vectors):
     closest_vec = None
@@ -13,6 +15,7 @@ def top1_accuracy(vector_anchor, list_of_vectors):
             min_distance = distance
             closest_vec = vector
     return closest_vec
+
 
 def show_top1_accuracy(ref_img_paths, closest_img_idx, query_img_path, map_fun):
     closest_img_path = ref_img_paths[closest_img_idx]
@@ -37,11 +40,36 @@ def show_top1_accuracy(ref_img_paths, closest_img_idx, query_img_path, map_fun):
     
     plt.show()
 
+
 def top3_accuracy(vector_anchor, list_of_vectors):
+    # if len(vector_anchor).shape > 1:
+    #     vector_anchor = vector_anchor.flatten()
     distances = [(vector, euclidean_distance(vector_anchor, vector)) for vector in list_of_vectors]
     distances.sort(key=lambda x: x[1])
     closest_3_vecs = [item[0] for item in distances[:3]]
     return closest_3_vecs
+
+
+def calculate_top3_accuracy(test_data, reference_data):
+    total_tests = len(test_data)
+    correct_top3_count = 0
+
+    for test_embedding, test_label in test_data.items():
+        test_embedding_np = np.array(test_embedding)  # Convert tuple back to numpy array
+        closest_3_embeddings = top3_accuracy(test_embedding_np, list(reference_data.keys()))
+
+        closest_3_labels = [reference_data[embedding] for embedding in closest_3_embeddings]
+
+        # print(test_label)
+        # for label in closest_3_labels:
+        #     print(label)
+        # print(correct_top3_count)
+        if test_label in closest_3_labels:
+            correct_top3_count += 1
+        # print(correct_top3_count)
+
+    top3_accuracy_value = correct_top3_count / total_tests * 100
+    return top3_accuracy_value
 
 
 def show_top3_accuracy(ref_img_paths, closest_3_indices, query_img_path, map_fun):
