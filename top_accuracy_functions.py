@@ -56,6 +56,7 @@ def calculate_top3_accuracy(test_data, reference_data):
 
     for test_embedding, test_label in test_data.items():
         test_embedding_np = np.array(test_embedding)  # Convert tuple back to numpy array
+        print
         closest_3_embeddings = top3_accuracy(test_embedding_np, list(reference_data.keys()))
 
         closest_3_labels = [reference_data[embedding] for embedding in closest_3_embeddings]
@@ -70,6 +71,13 @@ def calculate_top3_accuracy(test_data, reference_data):
 
     top3_accuracy_value = correct_top3_count / total_tests * 100
     return top3_accuracy_value
+
+# def calculate_top1_accuracy(test_dict, reference_dict):
+#     total_tests = len(test_dict)
+#     correct_top1_count = 0
+
+#     for test_embedding, test_label in test_data.items():
+#         test_embedding_np = np.array(test_embedding)
 
 
 def show_top3_accuracy(ref_img_paths, closest_3_indices, query_img_path, map_fun):
